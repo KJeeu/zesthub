@@ -1,6 +1,7 @@
 import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
 import { Header } from "./components/Header";
 import MainPage from "./pages/MainPage";
+import IntroducePage from "./pages/IntroducePage";
 
 const Root = () => {
 	return (
@@ -16,7 +17,10 @@ function Router() {
 		{
 			path: "/",
 			element: <Root />,
-			children: [{ index: true, element: <MainPage /> }],
+			children: [
+				{ index: true, element: <IntroducePage /> },
+				{ path: "/main", element: <MainPage /> },
+			],
 		},
 	]);
 
