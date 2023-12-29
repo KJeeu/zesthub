@@ -10,14 +10,9 @@ interface TextButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
 	width?: `${string}px` | `${string}%`;
 }
 
-function TextButton({
-	text,
-	colorType,
-	disabled = false,
-	...props
-}: TextButtonProps) {
+function TextButton({ text, colorType, ...props }: TextButtonProps) {
 	return (
-		<StyledButton {...props} colorType={colorType} disabled={disabled}>
+		<StyledButton {...props} colorType={colorType}>
 			{text}
 		</StyledButton>
 	);
@@ -42,14 +37,7 @@ const StyledButton = styled.button<{
 		colorType === "dark" ? "var(--white)" : "var(--primary-5)"};
 	font-size: ${FONT_SIZE.md};
 
-	&:disabled {
-		background-color: ${({ colorType }) =>
-			colorType === "dark" ? "var(--primary-3)" : "var(--gray-1)"};
-
-		color: var(--white);
-	}
-
-	&:not(:disabled):hover {
+	&:hover {
 		background-color: ${({ colorType }) =>
 			colorType === "dark" ? "var(--primary-7);" : "var(--primary-2)"};
 	}
