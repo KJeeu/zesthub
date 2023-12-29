@@ -1,18 +1,35 @@
 import styled from "styled-components";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import logo from "@/assets/logo.png";
+import TextButton from "../Button";
 
 const Header = () => {
+	const navigator = useNavigate();
+
 	return (
 		<StyledHeader>
 			<Link aria-label="나의 냉장고 홈페이지" role="button" to="/">
 				<img src={logo} width={136} />
 			</Link>
+
+			<StyledRightSection>
+				<TextButton
+					text="로그인"
+					colorType="dark"
+					type="button"
+					onClick={() => navigator("/")}
+				/>
+			</StyledRightSection>
 		</StyledHeader>
 	);
 };
 
 export default Header;
+
+const StyledRightSection = styled.section`
+	display: flex;
+	gap: 2.4rem;
+`;
 
 const StyledHeader = styled.header`
 	display: flex;
