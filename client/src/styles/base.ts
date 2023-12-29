@@ -22,8 +22,8 @@ const base = css`
 		--yellow: #ffd56f;
 		--black: #424242;
 		--white: #fff;
+		--gray-shadow: rgb(128, 128, 128, 0.5);
 		--shadow: 0 1px 16px 0 rgb(66 66 66 / 10%);
-		--map-shadow: 0 6px 16px rgb(0 0 0 / 12%);
 	}
 
 	* {
