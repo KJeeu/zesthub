@@ -145,6 +145,13 @@ const reset = css`
 		border-collapse: collapse;
 		border-spacing: 0;
 	}
+
+	#root,
+	html,
+	body {
+		height: 100%;
+		width: 100%;
+	}
 `;
 
 export default reset;
