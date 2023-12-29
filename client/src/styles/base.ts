@@ -16,7 +16,7 @@ const base = css`
 		--gray-1: #eee;
 		--gray-2: #e0e0e0;
 		--gray-3: #bdbdbd;
-		--gray-4: #393939;
+		--gray-4: #6b6b6b;
 		--gray-5: #2c2c2c;
 		--gray-6: #161616;
 		--yellow: #ffd56f;
