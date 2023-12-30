@@ -1,10 +1,12 @@
 import styled from "styled-components";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useModal } from "@/hooks/useModal";
 import logo from "@/assets/logo.png";
 import TextButton from "../Button";
+import LoginModal from "../Modal/LoginModal";
 
 const Header = () => {
-	const navigator = useNavigate();
+	const { isOpen, openModal, closeModal } = useModal();
 
 	return (
 		<StyledHeader>
@@ -17,8 +19,9 @@ const Header = () => {
 					text="로그인"
 					colorType="dark"
 					type="button"
-					onClick={() => navigator("/")}
+					onClick={openModal}
 				/>
+				<LoginModal isOpen={isOpen} closeModal={closeModal} />
 			</StyledRightSection>
 		</StyledHeader>
 	);
