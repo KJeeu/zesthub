@@ -2,10 +2,11 @@ import styled from "styled-components";
 import introduceBack from "@/assets/introduceBack.png";
 import TextButton from "@/components/Button";
 import { FONT_SIZE } from "@/styles/common";
-import { useNavigate } from "react-router-dom";
+import { useModal } from "@/hooks/useModal";
+import LoginModal from "@/components/Modal/LoginModal";
 
 const IntroducePage = () => {
-	const navigate = useNavigate();
+	const { isOpen, openModal, closeModal } = useModal();
 
 	return (
 		<Container>
@@ -18,8 +19,9 @@ const IntroducePage = () => {
 					text="시작하기"
 					colorType="dark"
 					type="button"
-					onClick={() => navigate("/")}
+					onClick={openModal}
 				/>
+				<LoginModal isOpen={isOpen} closeModal={closeModal} />
 			</Introduce>
 		</Container>
 	);
