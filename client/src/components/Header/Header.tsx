@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { useModal } from "@/hooks/useModal";
 import logo from "@/assets/logo.png";
-import TextButton from "../Button";
+import TextButton from "@/components/TextButton";
 import LoginModal from "../Modal/LoginModal";
 
 const Header = () => {
