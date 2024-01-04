@@ -1,26 +1,46 @@
-import styled from "styled-components";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
+import styled from "styled-components";
+
 import { useModal } from "@/hooks/useModal";
+import { useAuth } from "@/hooks/useAuth";
+import { Logout } from "@/service/logout";
+
 import logo from "@/assets/logo.png";
-import TextButton from "../Button";
+import TextButton from "@/components/TextButton";
 import LoginModal from "../Modal/LoginModal";
 
 const Header = () => {
 	const { isOpen, openModal, closeModal } = useModal();
+	const { user, setUser } = useAuth();
+	const [isLogin, setIsLogin] = useState(!!user);
+
+	useEffect(() => {
+		setIsLogin(!!user);
+	}, [user]);
 
 	return (
 		<StyledHeader>
 			<Link aria-label="나의 냉장고 홈페이지" role="button" to="/">
-				<img src={logo} width={136} />
+				<img src={logo} width={136} alt="로고" />
 			</Link>
 
 			<StyledRightSection>
-				<TextButton
-					text="로그인"
-					colorType="dark"
-					type="button"
-					onClick={openModal}
-				/>
+				{isLogin ? (
+					<TextButton
+						text="로그아웃"
+						colorType="dark"
+						type="button"
+						onClick={() => Logout(setUser)}
+					/>
+				) : (
+					<TextButton
+						text="로그인"
+						colorType="dark"
+						type="button"
+						onClick={openModal}
+					/>
+				)}
 				<LoginModal isOpen={isOpen} closeModal={closeModal} />
 			</StyledRightSection>
 		</StyledHeader>
