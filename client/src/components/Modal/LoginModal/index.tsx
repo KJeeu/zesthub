@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import Modal from "@/components/Modal/Modal";
 import { FONT_SIZE } from "@/styles/common";
+import IconButton from "@/components/IconButton";
 
 type LoginModalProps = {
 	isOpen: boolean;
@@ -11,8 +12,10 @@ const LoginModal = ({ isOpen, closeModal }: LoginModalProps) => {
 	return (
 		<Modal isOpen={isOpen} closeModal={closeModal}>
 			<Container>
-				<Title>로그인</Title>
-				<Content>로그인테스트</Content>
+				<Title>간편 로그인</Title>
+				<Content>
+					<IconButton type="login" closeModal={closeModal} />
+				</Content>
 			</Container>
 		</Modal>
 	);

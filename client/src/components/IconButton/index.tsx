@@ -1,20 +1,42 @@
 import styled from "styled-components";
 import { FONT_SIZE } from "@/styles/common";
 
+import { useAuth } from "@/hooks/useAuth";
+import { login } from "@/service/login";
+
 import google from "@/assets/icons/google.svg";
 import InlineSVG from "react-inlinesvg";
 
 const Icon: Record<string, React.ReactNode> = {
-	google: <InlineSVG src={google} width={24} />,
+	login: <InlineSVG src={google} width={24} />,
 };
 
 const Message: Record<string, React.ReactNode> = {
-	google: "구글로 로그인하기",
+	login: "구글로 로그인하기",
 };
 
-const IconButton = ({ type }: { type: string }) => {
+interface IconButtonProps {
+	type: string;
+	closeModal?: () => void;
+}
+
+const IconButton = ({ type, closeModal }: IconButtonProps) => {
+	const { setUser } = useAuth();
+
+	const handleClick = (type: string) => {
+		switch (type) {
+			case "login":
+				login(setUser);
+				break;
+		}
+
+		if (closeModal) {
+			closeModal();
+		}
+	};
+
 	return (
-		<StyledButton>
+		<StyledButton onClick={() => handleClick(type)}>
 			<div>{Icon[type]}</div>
 			<StyledButtonText>{Message[type]}</StyledButtonText>
 		</StyledButton>
