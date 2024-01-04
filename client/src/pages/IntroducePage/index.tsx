@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import introduceBack from "@/assets/introduceBack.png";
-import TextButton from "@/components/Button";
+import TextButton from "@/components/TextButton";
 import { FONT_SIZE } from "@/styles/common";
 import { useModal } from "@/hooks/useModal";
 import LoginModal from "@/components/Modal/LoginModal";
