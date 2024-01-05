@@ -1,12 +1,18 @@
 import styled from "styled-components";
+import { Navigate } from "react-router-dom";
 import introduceBack from "@/assets/introduceBack.png";
 import TextButton from "@/components/TextButton";
 import { FONT_SIZE } from "@/styles/common";
 import { useModal } from "@/hooks/useModal";
 import LoginModal from "@/components/Modal/LoginModal";
+import { useAuth } from "@/hooks/useAuth";
+import { PATH } from "@/constants/path";
 
 const IntroducePage = () => {
+	const { user } = useAuth();
 	const { isOpen, openModal, closeModal } = useModal();
+
+	if (user) return <Navigate to={`${PATH.main}`} />;
 
 	return (
 		<Container>

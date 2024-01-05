@@ -1,5 +1,6 @@
 import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
-import { Header } from "./components/Header";
+import { PATH } from "./constants/path";
+import Header from "./components/Header";
 import MainPage from "./pages/MainPage";
 import IntroducePage from "./pages/IntroducePage";
 
@@ -19,7 +20,7 @@ function Router() {
 			element: <Root />,
 			children: [
 				{ index: true, element: <IntroducePage /> },
-				{ path: "/main", element: <MainPage /> },
+				{ path: `${PATH.main}`, element: <MainPage /> },
 			],
 		},
 	]);
