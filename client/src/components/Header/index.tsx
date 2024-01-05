@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
+import { PATH } from "@/constants/path";
 import { useModal } from "@/hooks/useModal";
 import { useAuth } from "@/hooks/useAuth";
 import { Logout } from "@/service/Logout";
@@ -11,9 +12,15 @@ import TextButton from "@/components/TextButton";
 import LoginModal from "../Modal/LoginModal";
 
 const Header = () => {
+	const navigate = useNavigate();
 	const { isOpen, openModal, closeModal } = useModal();
 	const { user, setUser } = useAuth();
 	const [isLogin, setIsLogin] = useState(!!user);
+
+	const logout = async () => {
+		await Logout(setUser);
+		navigate(`${PATH.app}`);
+	};
 
 	useEffect(() => {
 		setIsLogin(!!user);
@@ -31,7 +38,7 @@ const Header = () => {
 						text="로그아웃"
 						colorType="dark"
 						type="button"
-						onClick={() => Logout(setUser)}
+						onClick={logout}
 					/>
 				) : (
 					<TextButton
