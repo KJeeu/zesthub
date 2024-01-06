@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import Modal from "@/components/Modal/Modal";
+import Modal from "@/components/Modal";
 import { FONT_SIZE } from "@/styles/common";
 import IconButton from "@/components/IconButton";
 
