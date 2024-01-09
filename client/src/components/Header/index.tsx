@@ -5,7 +5,7 @@ import styled from "styled-components";
 import { PATH } from "@/constants/path";
 import { useModal } from "@/hooks/useModal";
 import { useAuth } from "@/hooks/useAuth";
-import { Logout } from "@/service/Logout";
+import { logout } from "@/service/useLogout";
 
 import logo from "@/assets/logo.png";
 import TextButton from "@/components/TextButton";
@@ -17,8 +17,8 @@ const Header = () => {
 	const { user, setUser } = useAuth();
 	const [isLogin, setIsLogin] = useState(!!user);
 
-	const logout = async () => {
-		await Logout(setUser);
+	const handleLogout = async () => {
+		await logout(setUser);
 		navigate(`${PATH.app}`);
 	};
 
@@ -38,7 +38,7 @@ const Header = () => {
 						text="로그아웃"
 						colorType="dark"
 						type="button"
-						onClick={logout}
+						onClick={handleLogout}
 					/>
 				) : (
 					<TextButton
