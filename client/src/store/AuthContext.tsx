@@ -1,9 +1,7 @@
-import { createContext, useEffect, useState, ReactNode } from "react";
+import { createContext, useEffect, useState } from "react";
 import { auth } from "@/firebase";
 
-interface AuthContextProviderProps {
-	children: ReactNode | ReactNode[];
-}
+import type { contextProps } from "@/types/context.type";
 
 export interface User {
 	name: string | null;
@@ -19,21 +17,21 @@ export const AuthContext = createContext<AuthContextType | undefined>(
 	undefined,
 );
 
-export const AuthContextProvider = ({ children }: AuthContextProviderProps) => {
+export const AuthContextProvider = ({ children }: contextProps) => {
 	const [user, setUser] = useState<User | null>(null);
 
-	const unsubscribe = auth.onAuthStateChanged((authUser) => {
-		if (authUser) {
-			setUser({
-				name: authUser.displayName,
-				email: authUser.email,
-			});
-		} else {
-			setUser(null);
-		}
-	});
-
 	useEffect(() => {
+		const unsubscribe = auth.onAuthStateChanged((authUser) => {
+			if (authUser) {
+				setUser({
+					name: authUser.displayName,
+					email: authUser.email,
+				});
+			} else {
+				setUser(null);
+			}
+		});
+
 		return () => unsubscribe();
 	}, []);
 
