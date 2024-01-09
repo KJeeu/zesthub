@@ -1,9 +1,6 @@
 import styled from "styled-components";
 import { FONT_SIZE } from "@/styles/common";
 
-import { useAuth } from "@/hooks/useAuth";
-import { login } from "@/service/login";
-
 import google from "@/assets/icons/google.svg";
 import InlineSVG from "react-inlinesvg";
 
@@ -17,26 +14,12 @@ const Message: Record<string, React.ReactNode> = {
 
 interface IconButtonProps {
 	type: string;
-	closeModal?: () => void;
+	onClick: () => void;
 }
 
-const IconButton = ({ type, closeModal }: IconButtonProps) => {
-	const { setUser } = useAuth();
-
-	const handleClick = (type: string) => {
-		switch (type) {
-			case "login":
-				login(setUser);
-				break;
-		}
-
-		if (closeModal) {
-			closeModal();
-		}
-	};
-
+const IconButton = ({ type, onClick }: IconButtonProps) => {
 	return (
-		<StyledButton onClick={() => handleClick(type)}>
+		<StyledButton onClick={onClick}>
 			<div>{Icon[type]}</div>
 			<StyledButtonText>{Message[type]}</StyledButtonText>
 		</StyledButton>
