@@ -3,18 +3,27 @@ import Modal from "@/components/Modal";
 import { FONT_SIZE } from "@/styles/common";
 import IconButton from "@/components/IconButton";
 
+import { useLogin } from "@/service/useLogin";
+
 type LoginModalProps = {
 	isOpen: boolean;
 	closeModal: () => void;
 };
 
 const LoginModal = ({ isOpen, closeModal }: LoginModalProps) => {
+	const { login } = useLogin();
+
+	const handleLogin = () => {
+		login();
+		closeModal();
+	};
+
 	return (
 		<Modal isOpen={isOpen} closeModal={closeModal}>
 			<Container>
 				<Title>간편 로그인</Title>
 				<Content>
-					<IconButton type="login" closeModal={closeModal} />
+					<IconButton type="login" onClick={handleLogin} />
 				</Content>
 			</Container>
 		</Modal>
@@ -36,7 +45,7 @@ const Title = styled.div`
 	font-weight: bold;
 `;
 
-const Content = styled.div`
+const Content = styled.section`
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
