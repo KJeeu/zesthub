@@ -12,7 +12,7 @@ interface TextButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
 
 function TextButton({ text, colorType, ...props }: TextButtonProps) {
 	return (
-		<StyledButton {...props} colorType={colorType}>
+		<StyledButton {...props} $colorType={colorType}>
 			{text}
 		</StyledButton>
 	);
@@ -21,7 +21,7 @@ function TextButton({ text, colorType, ...props }: TextButtonProps) {
 export default TextButton;
 
 const StyledButton = styled.button<{
-	colorType: "dark" | "light";
+	$colorType: "dark" | "light";
 	width?: `${string}px` | `${string}%`;
 }>`
 	width: ${({ width }) => width};
@@ -30,15 +30,15 @@ const StyledButton = styled.button<{
 
 	border: none;
 	border-radius: ${BORDER_RADIUS.sm};
-	background-color: ${({ colorType }) =>
-		colorType === "dark" ? "var(--primary-5)" : "var(--primary-1)"};
+	background-color: ${({ $colorType }) =>
+		$colorType === "dark" ? "var(--primary-5)" : "var(--primary-1)"};
 
-	color: ${({ colorType }) =>
-		colorType === "dark" ? "var(--white)" : "var(--primary-5)"};
+	color: ${({ $colorType }) =>
+		$colorType === "dark" ? "var(--white)" : "var(--primary-5)"};
 	font-size: ${FONT_SIZE.md};
 
 	&:hover {
-		background-color: ${({ colorType }) =>
-			colorType === "dark" ? "var(--primary-7);" : "var(--primary-2)"};
+		background-color: ${({ $colorType }) =>
+			$colorType === "dark" ? "var(--primary-7);" : "var(--primary-2)"};
 	}
 `;
