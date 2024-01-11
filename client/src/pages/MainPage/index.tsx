@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import FilterFoodSelect from "@/components/FilterFoodSelect";
 import Refrigerator from "@/components/Refrigerator";
+import RecipeCreate from "@/components/RecipeCreate";
 
 const MainPage = () => {
 	return (
@@ -9,7 +10,9 @@ const MainPage = () => {
 				<FilterFoodSelect />
 				<Refrigerator />
 			</LeftWrapper>
-			<RightWrapper></RightWrapper>
+			<RightWrapper>
+				<RecipeCreate />
+			</RightWrapper>
 		</Container>
 	);
 };
@@ -32,7 +35,7 @@ const LeftWrapper = styled.section`
 
 const RightWrapper = styled.section`
 	width: 50%;
-	height: 100%;
+	padding: 5%;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
