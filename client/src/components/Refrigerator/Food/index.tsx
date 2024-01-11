@@ -1,13 +1,21 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
-import { BORDER_RADIUS } from "@/styles/common";
+import { FONT_SIZE, BORDER_RADIUS } from "@/styles/common";
 import { getFoodImage } from "@/api/refrigerator";
-import { FONT_SIZE } from "@/styles/common";
+import { useUserFoodCartStore, useUserFoodSelectStore } from "@/store";
 
 import type { FoodCartData } from "@/types/api.types";
 
 const Food = ({ items }: { items: FoodCartData[] }) => {
+	const { addFoodCart } = useUserFoodCartStore();
+	const { isFoodOpenInfo } = useUserFoodSelectStore();
 	const [imageUrls, setImageUrls] = useState(new Map());
+
+	const handleFoodInfo = (item: FoodCartData) => {
+		if (!isFoodOpenInfo) {
+			addFoodCart(item.name);
+		}
+	};
 
 	useEffect(() => {
 		const fetchImage = async () => {
@@ -24,7 +32,7 @@ const Food = ({ items }: { items: FoodCartData[] }) => {
 	return (
 		<Wrapper>
 			{items.map((item) => (
-				<Container key={item.id}>
+				<Container key={item.id} onClick={() => handleFoodInfo(item)}>
 					<FoodImage src={imageUrls.get(item.id)} alt={item.name} />
 					<FoodInfo>{item.name}</FoodInfo>
 				</Container>
