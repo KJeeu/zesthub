@@ -3,6 +3,7 @@ import { PATH } from "./constants/path";
 import Header from "./components/Header";
 import MainPage from "./pages/MainPage";
 import IntroducePage from "./pages/IntroducePage";
+import RecipeSearchPage from "./pages/RecipeSearchPage";
 
 const Root = () => {
 	return (
@@ -21,6 +22,7 @@ function Router() {
 			children: [
 				{ index: true, element: <IntroducePage /> },
 				{ path: `${PATH.main}`, element: <MainPage /> },
+				{ path: `${PATH.recipeSearch}`, element: <RecipeSearchPage /> },
 			],
 		},
 	]);
