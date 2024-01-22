@@ -3,6 +3,7 @@ import IconButton from "@/components/IconButton";
 import { FONT_SIZE, BORDER_RADIUS } from "@/styles/common";
 import { useUserFoodCartStore, useUserFoodSelectStore } from "@/store";
 import { randomColor } from "@/constants/randomColor";
+import { useNavigate } from "react-router-dom";
 
 type FoodSelectListProps = {
 	isOpen: boolean;
@@ -12,6 +13,7 @@ type FoodSelectListProps = {
 const FoodSelectList = ({ isOpen, close }: FoodSelectListProps) => {
 	const { foodCart, foodCartReset, deleteFoodCart } = useUserFoodCartStore();
 	const { openFoodInfo } = useUserFoodSelectStore();
+	const navigate = useNavigate();
 
 	const handleClose = () => {
 		foodCartReset();
@@ -20,7 +22,9 @@ const FoodSelectList = ({ isOpen, close }: FoodSelectListProps) => {
 	};
 
 	const handleSearch = () => {
-		//TODO: 레시피 검색 페이지 이동
+		if (foodCart.length > 0) {
+			navigate(`/recipe/search/${foodCart}`);
+		}
 	};
 
 	return (
