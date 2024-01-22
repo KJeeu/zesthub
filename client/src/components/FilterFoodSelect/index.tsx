@@ -17,7 +17,7 @@ const FilterFoodSelect = () => {
 	});
 
 	const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
-		const selectedCategory = categoryData.find(
+		const selectedCategory = categoryData?.find(
 			(category) => category.title === e.target.value,
 		);
 		if (selectedCategory) {
@@ -29,7 +29,7 @@ const FilterFoodSelect = () => {
 		<Wrapper>
 			<Select onChange={handleSelectChange}>
 				<option value="">전체</option>
-				{categoryData.map((category) => (
+				{categoryData?.map((category) => (
 					<option key={category.title} value={category.title}>
 						{category.title}
 					</option>
