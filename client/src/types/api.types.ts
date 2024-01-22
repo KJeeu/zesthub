@@ -13,3 +13,15 @@ export interface FoodCartData {
 	name: string;
 	place: string;
 }
+
+export interface RecipeListData {
+	id: string;
+	menuName: string;
+	menuImage: string;
+	ingredients: {
+		name: string[];
+		detail: string[];
+	};
+	recipeInfo: string[];
+	menuTip: string[];
+}
