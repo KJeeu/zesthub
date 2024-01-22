@@ -22,7 +22,9 @@ const FoodSelectList = ({ isOpen, close }: FoodSelectListProps) => {
 	};
 
 	const handleSearch = () => {
-		navigate(`/recipe/search/${foodCart}`);
+		if (foodCart.length > 0) {
+			navigate(`/recipe/search/${foodCart}`);
+		}
 	};
 
 	return (
