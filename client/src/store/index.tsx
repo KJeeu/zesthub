@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import type { CategoryData } from "@/types/api.types";
+import type { CategoryData, RecipeListData } from "@/types/api.types";
 
 interface UserCategoryStoreTyper {
 	category: CategoryData | null;
@@ -47,3 +47,25 @@ export const useUserFoodCartStore = create<UserFoodCartStoreTyper>((set) => ({
 		})),
 	foodCartReset: () => set({ foodCart: [] }),
 }));
+
+interface UserSelectRecipeStoreType {
+	selectedRecipe: RecipeListData;
+	userSelectRecipe: (recipe: RecipeListData) => void;
+}
+
+export const useUserSelectRecipeStore = create<UserSelectRecipeStoreType>(
+	(set) => ({
+		selectedRecipe: {
+			id: "",
+			menuName: "",
+			menuImage: "",
+			ingredients: {
+				name: [],
+				detail: [],
+			},
+			recipeInfo: [],
+			menuTip: [],
+		},
+		userSelectRecipe: (recipe) => set({ selectedRecipe: recipe }),
+	}),
+);
