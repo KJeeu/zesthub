@@ -1,18 +1,31 @@
 import styled from "styled-components";
+import Image from "../Image";
+import { useNavigate } from "react-router-dom";
+import { useUserSelectRecipeStore } from "@/store";
+import { FONT_SIZE } from "@/styles/common";
 import type { RecipeListData } from "@/types/api.types";
-import { FONT_SIZE, BORDER_RADIUS } from "@/styles/common";
 
 interface SearchResultBoxProps {
 	recipe: RecipeListData;
 }
 
 const SearchResultBox = ({ recipe }: SearchResultBoxProps) => {
+	const { userSelectRecipe } = useUserSelectRecipeStore();
+	const navigate = useNavigate();
+	const onClick = () => {
+		userSelectRecipe(recipe);
+		navigate(`/recipe/detail`);
+	};
+
 	return (
-		<ResultBox>
+		<ResultBox onClick={onClick}>
 			<SearchResultBoxInfoCard>
-				<ImageSction>
-					<Image src={recipe.menuImage} alt="recipe" />
-				</ImageSction>
+				<Image
+					menu={recipe.menuName}
+					menuImage={recipe.menuImage}
+					width="198px"
+					height="150px"
+				/>
 				<InfoSection>
 					<InfoTopSection>
 						<Menu>{recipe.menuName}</Menu>
@@ -40,31 +53,6 @@ const SearchResultBoxInfoCard = styled.li`
 	cursor: pointer;
 `;
 
-const ImageSction = styled.section`
-	position: relative;
-	overflow: hidden;
-
-	width: 198px;
-	min-width: 150px;
-
-	height: 150px;
-
-	border-radius: ${BORDER_RADIUS.md};
-
-	scroll-snap-align: start;
-	scroll-snap-stop: always;
-`;
-
-const Image = styled.img`
-	position: absolute;
-	inset: 0;
-
-	object-fit: cover;
-
-	width: 100%;
-	height: 100%;
-`;
-
 const InfoSection = styled.section`
 	display: flex;
 	flex-direction: column;
@@ -83,7 +71,7 @@ const InfoTopSection = styled.section`
 	align-items: center;
 `;
 
-const Menu = styled.h5`
+const Menu = styled.span`
 	font-size: ${FONT_SIZE.md};
 	line-height: 20px;
 	font-weight: bold;
