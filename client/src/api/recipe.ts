@@ -19,3 +19,5 @@ export const getRecipe = async (food: string) => {
 		console.log(error);
 	}
 };
+
+export default getRecipe;
