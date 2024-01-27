@@ -4,14 +4,15 @@ import { Link, useParams } from "react-router-dom";
 import { FONT_SIZE } from "@/styles/common";
 import { getRecipe } from "@/api/recipe";
 import SearchResultBox from "@/components/SearchResultBox";
-import type { RecipeListData } from "@/types/api.types";
 
 const RecipeSearchPage = () => {
 	const { foodCart } = useParams();
 
 	const { data: RecipeList } = useQuery({
 		queryKey: ["recipe", foodCart],
-		queryFn: () => getRecipe(foodCart!),
+		queryFn: () => {
+			return getRecipe(foodCart!); // Page parameter라서 없을 수가 없음
+		},
 		staleTime: Infinity,
 		gcTime: Infinity,
 	});
@@ -28,10 +29,8 @@ const RecipeSearchPage = () => {
 				{!RecipeList && <ResultCount>해당하는 레시피가 없습니다.</ResultCount>}
 				{RecipeList && (
 					<>
-						<ResultCount>{RecipeList.recipeListCount}개의 레시피</ResultCount>
-						{RecipeList?.recipeList.map((recipe: RecipeListData) => (
-							<SearchResultBox recipe={recipe} />
-						))}
+						<ResultCount>{RecipeList.length}개의 레시피</ResultCount>
+						{RecipeList?.map((recipe) => <SearchResultBox recipe={recipe} />)}
 					</>
 				)}
 			</ResultSection>
