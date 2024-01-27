@@ -24,7 +24,7 @@ function Router() {
 				{ index: true, element: <IntroducePage /> },
 				{ path: `${PATH.main}`, element: <MainPage /> },
 				{ path: `${PATH.recipeSearch}`, element: <RecipeSearchPage /> },
-				{ path: `${PATH.recipeDetail}`, element: <RecipeDetailPage /> },
+        { path: `${PATH.recipeDetail}`, element: <RecipeDetailPage /> },
 			],
 		},
 	]);
