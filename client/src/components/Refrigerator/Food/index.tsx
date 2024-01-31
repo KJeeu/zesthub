@@ -1,42 +1,44 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import styled from "styled-components";
 import { FONT_SIZE, BORDER_RADIUS } from "@/styles/common";
 import { getFoodImage } from "@/api/refrigerator";
 import { useUserFoodCartStore, useUserFoodSelectStore } from "@/store";
+import { useModal } from "@/hooks/useModal";
+import FoodInfoModal from "@/components/Modal/FoodInfoModal";
 
 import type { FoodCartData } from "@/types/api.types";
 
 const Food = ({ items }: { items: FoodCartData[] }) => {
 	const { addFoodCart } = useUserFoodCartStore();
 	const { isFoodOpenInfo } = useUserFoodSelectStore();
-	const [imageUrls, setImageUrls] = useState(new Map());
+	const { isOpen, openModal, closeModal } = useModal();
+	const [selectFood, setSelectFood] = useState<FoodCartData>();
 
 	const handleFoodInfo = (item: FoodCartData) => {
 		if (!isFoodOpenInfo) {
 			addFoodCart(item.name);
+		} else {
+			openModal();
+			setSelectFood(item);
 		}
 	};
-
-	useEffect(() => {
-		const fetchImage = async () => {
-			const urls = new Map();
-			for (const item of items) {
-				urls.set(item.id, await getFoodImage(item.image));
-			}
-			setImageUrls(urls);
-		};
-
-		fetchImage();
-	}, [items]);
 
 	return (
 		<Wrapper>
 			{items.map((item) => (
 				<Container key={item.id} onClick={() => handleFoodInfo(item)}>
-					<FoodImage src={imageUrls.get(item.id)} alt={item.name} />
+					<FoodImage src={getFoodImage(item.image)} alt={item.name} />
 					<FoodInfo>{item.name}</FoodInfo>
 				</Container>
 			))}
+			{selectFood && (
+				<FoodInfoModal
+					isOpen={isOpen}
+					closeModal={closeModal}
+					image={getFoodImage(selectFood.image)}
+					item={selectFood}
+				/>
+			)}
 		</Wrapper>
 	);
 };
