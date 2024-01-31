@@ -4,7 +4,7 @@ export interface CategoryData {
 }
 
 export interface FoodCartData {
-	buyData: string;
+	buyDate: string;
 	category: string;
 	count: string;
 	expiryDate: string;
