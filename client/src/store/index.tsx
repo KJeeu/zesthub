@@ -1,6 +1,19 @@
 import { create } from "zustand";
 import type { CategoryData, RecipeListData } from "@/types/api.types";
 
+interface UseChangeRefriStoreTyper {
+	isChange: boolean;
+	change: () => void;
+}
+
+export const useChangeRefriStore = create<UseChangeRefriStoreTyper>((set) => ({
+	isChange: false,
+	change: () =>
+		set((prev) => ({
+			isChange: !prev.isChange,
+		})),
+}));
+
 interface UserCategoryStoreTyper {
 	category: CategoryData | null;
 	updateCategory: (category: CategoryData) => void;
