@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
 
-export interface contextProps {
+export interface ContextProps {
 	children: ReactNode | ReactNode[];
 }
