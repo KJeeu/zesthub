@@ -5,11 +5,13 @@ import Food from "../Food";
 
 import { getFoodCart } from "@/api/refrigerator";
 import { useUserCategoryStore } from "@/store";
+import { useChangeRefriStore } from "@/store";
 
 import type { FoodCartData } from "@/types/api.types";
 
 const FoodList = ({ type }: { type: string }) => {
 	const { category } = useUserCategoryStore();
+	const { isChange } = useChangeRefriStore();
 	const [foodCart, setFoodCart] = useState<[FoodCartData[], FoodCartData[]]>([
 		[],
 		[],
@@ -27,7 +29,7 @@ const FoodList = ({ type }: { type: string }) => {
 			const half = Math.floor(foodCart.length / 2);
 			setFoodCart([foodCart.slice(half), foodCart.slice(0, half)]);
 		});
-	}, [category]);
+	}, [category, isChange]);
 
 	return (
 		<Wrapper>

@@ -1,7 +1,7 @@
 import { createContext, useEffect, useState } from "react";
 import { auth } from "@/firebase";
 
-import type { contextProps } from "@/types/context.type";
+import type { ContextProps } from "@/types/context.type";
 
 export interface User {
 	name: string | null;
@@ -17,7 +17,7 @@ export const AuthContext = createContext<AuthContextType | undefined>(
 	undefined,
 );
 
-export const AuthContextProvider = ({ children }: contextProps) => {
+export const AuthContextProvider = ({ children }: ContextProps) => {
 	const [user, setUser] = useState<User | null>(null);
 
 	useEffect(() => {
