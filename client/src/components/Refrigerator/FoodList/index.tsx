@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSuspenseQuery } from "@tanstack/react-query";
 import styled from "styled-components";
 import Food from "../Food";
+import { useLoginUser } from "@/store";
 
 import { getFoodCart } from "@/api/refrigerator";
 import { useUserCategoryStore } from "@/store";
@@ -12,6 +13,7 @@ import type { FoodCartData } from "@/types/api.types";
 const FoodList = ({ type }: { type: string }) => {
 	const { category } = useUserCategoryStore();
 	const { isChange } = useChangeRefriStore();
+	const { loginUser } = useLoginUser();
 	const [foodCart, setFoodCart] = useState<[FoodCartData[], FoodCartData[]]>([
 		[],
 		[],
@@ -25,11 +27,11 @@ const FoodList = ({ type }: { type: string }) => {
 	// });
 
 	useEffect(() => {
-		getFoodCart(type, category).then((foodCart) => {
+		getFoodCart(type, category, loginUser!).then((foodCart) => {
 			const half = Math.floor(foodCart.length / 2);
 			setFoodCart([foodCart.slice(half), foodCart.slice(0, half)]);
 		});
-	}, [category, isChange]);
+	}, [category, isChange, loginUser]);
 
 	return (
 		<Wrapper>

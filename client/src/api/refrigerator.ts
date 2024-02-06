@@ -31,12 +31,14 @@ export const createFoodCart = async (data: FoodCartData) => {
 		image: data.image,
 		name: data.name,
 		place: data.place,
+		user: data.user,
 	});
 };
 
 export const getFoodCart = async (
 	place: string,
 	category: CategoryData | null,
+	user: string,
 ) => {
 	const response = category
 		? await getDocs(
@@ -44,9 +46,16 @@ export const getFoodCart = async (
 					collection(db, "cart"),
 					where("place", "==", place),
 					where("category", "==", category?.title),
+					where("user", "==", user),
 				),
 			)
-		: await getDocs(query(collection(db, "cart"), where("place", "==", place)));
+		: await getDocs(
+				query(
+					collection(db, "cart"),
+					where("place", "==", place),
+					where("user", "==", user),
+				),
+			);
 
 	const data = response.docs.map((foodCart) => {
 		const data = foodCart.data();
@@ -59,6 +68,7 @@ export const getFoodCart = async (
 			image: data["image"],
 			name: data["name"],
 			place: data["place"],
+			user: data["user"],
 		};
 		return foodCartData;
 	});
@@ -95,5 +105,6 @@ export const updateFood = async (item: FoodCartData) => {
 		count: item.count,
 		place: item.place,
 		image: item.image,
+		user: item.user,
 	});
 };
