@@ -29,14 +29,7 @@ const FoodInfoModal = ({
 }: FoodInfoModalProps) => {
 	const { change } = useChangeRefriStore();
 	const [newItem, setNewItem] = useState({
-		category: item.category,
-		name: item.name,
-		buyDate: item.buyDate,
-		expiryDate: item.expiryDate,
-		count: item.count,
-		image: item.image,
-		id: item.id,
-		place: item.place,
+		...item,
 	});
 	const [newImageFile, setNewImageFile] = useState<File>();
 
@@ -79,7 +72,7 @@ const FoodInfoModal = ({
 			<Container>
 				<Title>상세보기</Title>
 				<Content>
-					<FoodInfoForm update={getFood} item={newItem} imageUrl={image} />
+					<FoodInfoForm update={getFood} item={item} imageUrl={image} />
 					<ButtonBox>
 						<TextButton
 							text="삭제"
