@@ -1,20 +1,42 @@
+import { useState } from "react";
 import styled from "styled-components";
+import { useQuery } from "@tanstack/react-query";
 import { FONT_SIZE } from "@/styles/common";
 import Image from "@/components/Image";
 import RecipeInfo from "@/components/RecipeInfo";
 import { useUserSelectRecipeStore } from "@/store";
 import TextButton from "@/components/TextButton";
 import { useLoginUser } from "@/store";
-import { createBookmark } from "@/api/bookmark";
+import { createBookmark, deleteBookmark, getBookmark } from "@/api/bookmark";
 
 const RecipeDetailPage = () => {
 	const { selectedRecipe } = useUserSelectRecipeStore();
 	const { loginUser } = useLoginUser();
 	const { menuName, menuImage } = selectedRecipe;
+	const [isBookmark, setIsBookmark] = useState<boolean>(false);
+
+	const { data: BookmarkList } = useQuery({
+		queryKey: ["bookmark", loginUser],
+		queryFn: () => {
+			return getBookmark(loginUser!);
+		},
+	});
+
+	const menus = BookmarkList?.map((x) => x.menu).includes(menuName);
+	if (menus) {
+		setIsBookmark(true);
+	}
 
 	const handleBookMark = () => {
-		createBookmark(loginUser!, menuName);
-		alert("추가되었습니다.");
+		if (isBookmark) {
+			deleteBookmark(loginUser!, menuName);
+			alert("삭제되었습니다.");
+			setIsBookmark(false);
+		} else {
+			createBookmark(loginUser!, menuName);
+			alert("추가되었습니다.");
+			setIsBookmark(true);
+		}
 	};
 
 	return (
@@ -29,7 +51,7 @@ const RecipeDetailPage = () => {
 						height="450px"
 					/>
 					<TextButton
-						text="찜하기"
+						text={isBookmark ? "찜 삭제" : "찜 하기"}
 						colorType="dark"
 						type="button"
 						onClick={handleBookMark}
