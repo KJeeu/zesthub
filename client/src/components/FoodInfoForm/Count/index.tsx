@@ -14,7 +14,7 @@ const Count = ({ item, update }: FoodInfoData) => {
 
 	return (
 		<Wrapper>
-			<span>구매일자</span>
+			<span>개수</span>
 			<Input
 				type="number"
 				min="1"
