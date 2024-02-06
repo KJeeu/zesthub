@@ -5,6 +5,7 @@ import MainPage from "./pages/MainPage";
 import IntroducePage from "./pages/IntroducePage";
 import RecipeSearchPage from "./pages/RecipeSearchPage";
 import RecipeDetailPage from "./pages/RecipeDetailPage";
+import BookmarkPage from "./pages/BookmarkPage";
 
 const Root = () => {
 	return (
@@ -24,7 +25,8 @@ function Router() {
 				{ index: true, element: <IntroducePage /> },
 				{ path: `${PATH.main}`, element: <MainPage /> },
 				{ path: `${PATH.recipeSearch}`, element: <RecipeSearchPage /> },
-        { path: `${PATH.recipeDetail}`, element: <RecipeDetailPage /> },
+				{ path: `${PATH.recipeDetail}`, element: <RecipeDetailPage /> },
+				{ path: `${PATH.bookmark}`, element: <BookmarkPage /> },
 			],
 		},
 	]);

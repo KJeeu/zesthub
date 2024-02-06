@@ -8,7 +8,7 @@ import SearchResultBox from "@/components/SearchResultBox";
 const RecipeSearchPage = () => {
 	const { foodCart } = useParams();
 
-	const { data: RecipeList } = useQuery({
+	const { data: RecipeList, isLoading } = useQuery({
 		queryKey: ["recipe", foodCart],
 		queryFn: () => {
 			return getRecipe(foodCart!); // Page parameter라서 없을 수가 없음
@@ -26,7 +26,10 @@ const RecipeSearchPage = () => {
 				<SubTitle>재료 : {foodCart}</SubTitle>
 			</Banner>
 			<ResultSection>
-				{!RecipeList && <ResultCount>해당하는 레시피가 없습니다.</ResultCount>}
+				{isLoading && <ResultCount>레시피 찾는 중</ResultCount>}
+				{!isLoading && !RecipeList && (
+					<ResultCount>해당하는 레시피가 없습니다.</ResultCount>
+				)}
 				{RecipeList && (
 					<>
 						<ResultCount>{RecipeList.length}개의 레시피</ResultCount>

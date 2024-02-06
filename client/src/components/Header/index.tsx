@@ -22,6 +22,10 @@ const Header = () => {
 		navigate(`${PATH.app}`);
 	};
 
+	const handleBookmark = () => {
+		navigate(`/bookmark`);
+	};
+
 	useEffect(() => {
 		setIsLogin(!!user);
 	}, [user]);
@@ -34,12 +38,21 @@ const Header = () => {
 
 			<StyledRightSection>
 				{isLogin ? (
-					<TextButton
-						text="로그아웃"
-						colorType="dark"
-						type="button"
-						onClick={handleLogout}
-					/>
+					<>
+						<TextButton
+							text="찜한 목록"
+							colorType="dark"
+							type="button"
+							onClick={handleBookmark}
+						/>
+
+						<TextButton
+							text="로그아웃"
+							colorType="dark"
+							type="button"
+							onClick={handleLogout}
+						/>
+					</>
 				) : (
 					<TextButton
 						text="로그인"

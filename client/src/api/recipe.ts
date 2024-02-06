@@ -1,5 +1,5 @@
 import axios from "axios";
-import recipeFilter from "@/utils/recipeFilter";
+import { recipeFilter } from "@/utils/recipeFilter";
 
 export const getRecipe = async (food: string) => {
 	const KEY = import.meta.env.VITE_API_RECIPE_KEY;
@@ -20,4 +20,17 @@ export const getRecipe = async (food: string) => {
 	}
 };
 
-export default getRecipe;
+export const getBookmarkRecipe = async (menu: string) => {
+	const KEY = import.meta.env.VITE_API_RECIPE_KEY;
+
+	try {
+		const response = await axios.get(
+			`https://openapi.foodsafetykorea.go.kr/api/${KEY}/COOKRCP01/json/1/30/RCP_NM=${menu}`,
+		);
+
+		const recipeDataList = response.data.COOKRCP01.row;
+		return recipeFilter(recipeDataList);
+	} catch (error) {
+		console.log(error);
+	}
+};
