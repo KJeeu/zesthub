@@ -1,5 +1,5 @@
 # Zesthub
-<img width="1000" alt="메인페이지" src="https://github.com/growth-ring/taskgrow/assets/116357790/c03a14d3-1b3c-44e7-aa21-cfcf29f58a49">
+<img width="800" alt="메인페이지" src="https://github.com/growth-ring/taskgrow/assets/116357790/c03a14d3-1b3c-44e7-aa21-cfcf29f58a49">
 
 ### 프로젝트 소개
 ---
@@ -23,8 +23,8 @@
 
 <table>
   <tr>
-    <td><img width="1000" alt="메인페이지" src="https://github.com/growth-ring/taskgrow/assets/116357790/c03a14d3-1b3c-44e7-aa21-cfcf29f58a49"></td>
-    <td><img width="1000" alt="로그인 후 페이지" src="https://github.com/growth-ring/taskgrow/assets/116357790/03369fd5-7194-40c6-a863-061c783565f0"></td>
+    <td><img width="400" alt="메인페이지" src="https://github.com/growth-ring/taskgrow/assets/116357790/c03a14d3-1b3c-44e7-aa21-cfcf29f58a49"></td>
+    <td><img width="400" alt="로그인 후 페이지" src="https://github.com/growth-ring/taskgrow/assets/116357790/03369fd5-7194-40c6-a863-061c783565f0"></td>
   </tr>
   <tr>
     <td>로그인 X</td>
@@ -39,8 +39,8 @@
 - 이미지는 Storage에 저장되고, 식품 정보는 Cloud FireStore에 데이터가 저장된다.
 <table>
   <tr>
-    <td><img width="1000" alt="식품추가" src="https://github.com/growth-ring/taskgrow/assets/116357790/9d9d0105-3eb3-4f78-993c-4305c1f9d434"></td>
-    <td><img width="1000" alt="식품 추가 후" src="https://github.com/growth-ring/taskgrow/assets/116357790/1a77598b-271b-4a47-a6f3-40ade81647a5"></td>
+    <td><img width="400" alt="식품추가" src="https://github.com/growth-ring/taskgrow/assets/116357790/9d9d0105-3eb3-4f78-993c-4305c1f9d434"></td>
+    <td><img width="400" alt="식품 추가 후" src="https://github.com/growth-ring/taskgrow/assets/116357790/1a77598b-271b-4a47-a6f3-40ade81647a5"></td>
   </tr>
   <tr>
     <td>식품 추가 모달창</td>
@@ -56,8 +56,8 @@
 - 수정시 이미지 변경시 기존 저장된 이미지는 삭제되고 새로운 이미지가 Storage에 저장된다. 기존 Cloud FireStore에 데이터가 업데이트된다.
 <table>
   <tr>
-    <td><img width="1000" alt="식품추가" src="https://github.com/growth-ring/taskgrow/assets/116357790/6c4dbe85-587d-4c94-b6e6-27fc14f5d4ae"></td>
-    <td><img width="1000" alt="식품 추가 후" src="https://github.com/growth-ring/taskgrow/assets/116357790/740fe012-57d0-490f-ad28-45d5eb54bb03"></td>
+    <td><img width="400" alt="식품추가" src="https://github.com/growth-ring/taskgrow/assets/116357790/6c4dbe85-587d-4c94-b6e6-27fc14f5d4ae"></td>
+    <td><img width="400" alt="식품 추가 후" src="https://github.com/growth-ring/taskgrow/assets/116357790/740fe012-57d0-490f-ad28-45d5eb54bb03"></td>
   </tr>
   <tr>
     <td>식품 상세보기</td>
@@ -71,8 +71,8 @@
 - 수정시 이미지 변경시 기존 저장된 이미지는 삭제되고 새로운 이미지가 Storage에 저장된다. 기존 Cloud FireStore에 데이터가 업데이트된다.
 <table>
   <tr>
-    <td><img width="1000" alt="식품추가" src="https://github.com/growth-ring/taskgrow/assets/116357790/6c4dbe85-587d-4c94-b6e6-27fc14f5d4ae"></td>
-    <td><img width="1000" alt="식품 추가 후" src="https://github.com/growth-ring/taskgrow/assets/116357790/740fe012-57d0-490f-ad28-45d5eb54bb03"></td>
+    <td><img width="400" alt="식품추가" src="https://github.com/growth-ring/taskgrow/assets/116357790/6c4dbe85-587d-4c94-b6e6-27fc14f5d4ae"></td>
+    <td><img width="400" alt="식품 추가 후" src="https://github.com/growth-ring/taskgrow/assets/116357790/740fe012-57d0-490f-ad28-45d5eb54bb03"></td>
   </tr>
   <tr>
     <td>식품 상세보기</td>
@@ -85,8 +85,8 @@
 - 카테고리별로 필터 검색이 가능하다.
 <table>
   <tr>
-    <td><img width="1000" alt="식품 필터" src="https://github.com/growth-ring/taskgrow/assets/116357790/641675c5-ccd1-4d43-bbbb-02f0b762c8a2"></td>
-    <td><img width="1000" alt="식품 필터 후" src="https://github.com/growth-ring/taskgrow/assets/116357790/b4ebca7e-5fad-476a-b33f-55707194d3bd"></td>
+    <td><img width="400" alt="식품 필터" src="https://github.com/growth-ring/taskgrow/assets/116357790/641675c5-ccd1-4d43-bbbb-02f0b762c8a2"></td>
+    <td><img width="400" alt="식품 필터 후" src="https://github.com/growth-ring/taskgrow/assets/116357790/b4ebca7e-5fad-476a-b33f-55707194d3bd"></td>
   </tr>
   <tr>
     <td>식품 카테고리별 필터 기능</td>
@@ -100,8 +100,8 @@
 - 잘못 선택한 재료는 취소할 수 있다.
 <table>
   <tr>
-    <td><img width="1000" alt="레시피 만들기" src="https://github.com/growth-ring/taskgrow/assets/116357790/23487953-59cc-4fa3-86f4-efebb8cf2848"></td>
-    <td><img width="1000" alt="레시피 선택 후" src="https://github.com/growth-ring/taskgrow/assets/116357790/0ab9997c-93a2-4bb5-98b7-6a31d62e77cc"></td>
+    <td><img width="400" alt="레시피 만들기" src="https://github.com/growth-ring/taskgrow/assets/116357790/23487953-59cc-4fa3-86f4-efebb8cf2848"></td>
+    <td><img width="400" alt="레시피 선택 후" src="https://github.com/growth-ring/taskgrow/assets/116357790/0ab9997c-93a2-4bb5-98b7-6a31d62e77cc"></td>
   </tr>
   <tr>
     <td>레시피 만들기 버튼 클릭 후 </td>
@@ -115,9 +115,9 @@
 - < 화살표 클릭시 mainPage로 돌아간다.
 <table>
   <tr>
-    <td><img width="1000" alt="레시피 검색중" src="https://github.com/growth-ring/taskgrow/assets/116357790/b58e18cb-17cc-4e45-8bc8-701e7b0f6878"></td>
-    <td><img width="1000" alt="레시피 찾을 수 없음" src="https://github.com/growth-ring/taskgrow/assets/116357790/945aad71-1b33-4b03-be80-0276fb27ce58"></td>
-    <td><img width="1000" alt="레시피 리스트" src="https://github.com/growth-ring/taskgrow/assets/116357790/dc31e263-28ef-46aa-a05b-02f94a8e867b"></td>
+    <td><img width="400" alt="레시피 검색중" src="https://github.com/growth-ring/taskgrow/assets/116357790/b58e18cb-17cc-4e45-8bc8-701e7b0f6878"></td>
+    <td><img width="400" alt="레시피 찾을 수 없음" src="https://github.com/growth-ring/taskgrow/assets/116357790/945aad71-1b33-4b03-be80-0276fb27ce58"></td>
+    <td><img width="400" alt="레시피 리스트" src="https://github.com/growth-ring/taskgrow/assets/116357790/dc31e263-28ef-46aa-a05b-02f94a8e867b"></td>
   </tr>
   <tr>
     <td>레시피 로딩 화면</td>
@@ -132,8 +132,8 @@
 - 찜하기 누른 후 찜 삭제 버튼이 생성된다.
 <table>
   <tr>
-    <td><img width="1000" alt="레시피 찜하기 전" src="https://github.com/growth-ring/taskgrow/assets/116357790/3fa28adf-3e04-47f8-8163-b855bf1e0036"></td>
-    <td><img width="1000" alt="레시피 찜하기 후" src="https://github.com/growth-ring/taskgrow/assets/116357790/2b6ece4e-bef8-48e4-9822-ed83acdb1462"></td>
+    <td><img width="400" alt="레시피 찜하기 전" src="https://github.com/growth-ring/taskgrow/assets/116357790/3fa28adf-3e04-47f8-8163-b855bf1e0036"></td>
+    <td><img width="400" alt="레시피 찜하기 후" src="https://github.com/growth-ring/taskgrow/assets/116357790/2b6ece4e-bef8-48e4-9822-ed83acdb1462"></td>
   </tr>
   <tr>
     <td>찜하기 전</td>
@@ -147,8 +147,8 @@
 - < 화살표 클릭시 mainPage로 돌아간다.
 <table>
   <tr>
-    <td><img width="1000" alt="찜한 목록" src="https://github.com/growth-ring/taskgrow/assets/116357790/8a583475-8674-448c-a834-3e1c5bf2dcc9"></td>
-    <td><img width="1000" alt="찜한 목록에서 레시피 클릭 후" src="https://github.com/growth-ring/taskgrow/assets/116357790/2b6ece4e-bef8-48e4-9822-ed83acdb1462"></td>
+    <td><img width="400" alt="찜한 목록" src="https://github.com/growth-ring/taskgrow/assets/116357790/8a583475-8674-448c-a834-3e1c5bf2dcc9"></td>
+    <td><img width="400" alt="찜한 목록에서 레시피 클릭 후" src="https://github.com/growth-ring/taskgrow/assets/116357790/2b6ece4e-bef8-48e4-9822-ed83acdb1462"></td>
   </tr>
   <tr>
     <td>찜한 목록</td>
