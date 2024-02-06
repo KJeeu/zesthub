@@ -1,5 +1,5 @@
 import axios from "axios";
-import { recipeFilter } from "@/utils/recipeFilter";
+import recipeFilter from "@/utils/recipeFilter";
 
 export const getRecipe = async (food: string) => {
 	const KEY = import.meta.env.VITE_API_RECIPE_KEY;
