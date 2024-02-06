@@ -2,6 +2,7 @@ import styled from "styled-components";
 import FilterFoodSelect from "@/components/FilterFoodSelect";
 import Refrigerator from "@/components/Refrigerator";
 import RecipeCreate from "@/components/RecipeCreate";
+import AddFood from "@/components/AddFood";
 
 const MainPage = () => {
 	return (
@@ -11,6 +12,7 @@ const MainPage = () => {
 				<Refrigerator />
 			</LeftWrapper>
 			<RightWrapper>
+				<AddFood />
 				<RecipeCreate />
 			</RightWrapper>
 		</Container>

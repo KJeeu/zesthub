@@ -37,7 +37,6 @@ const Wrapper = styled.section`
 	display: flex;
 	justify-content: center;
 	width: 100%;
-	height: 50%;
 `;
 
 const Container = styled.section`
