@@ -12,6 +12,7 @@ export interface FoodCartData {
 	image: string;
 	name: string;
 	place: string;
+	user: string;
 }
 
 export interface RecipeListData {

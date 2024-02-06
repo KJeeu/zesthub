@@ -1,5 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import { auth } from "@/firebase";
+import { useLoginUser } from ".";
 
 import type { ContextProps } from "@/types/context.type";
 
@@ -19,6 +20,7 @@ export const AuthContext = createContext<AuthContextType | undefined>(
 
 export const AuthContextProvider = ({ children }: ContextProps) => {
 	const [user, setUser] = useState<User | null>(null);
+	const { setLoginUser } = useLoginUser();
 
 	useEffect(() => {
 		const unsubscribe = auth.onAuthStateChanged((authUser) => {
@@ -27,8 +29,10 @@ export const AuthContextProvider = ({ children }: ContextProps) => {
 					name: authUser.displayName,
 					email: authUser.email,
 				});
+				setLoginUser(authUser.email);
 			} else {
 				setUser(null);
+				setLoginUser(null);
 			}
 		});
 

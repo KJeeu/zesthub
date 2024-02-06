@@ -8,7 +8,7 @@ import { useChangeRefriStore } from "@/store";
 import { uploadImage, createFoodCart } from "@/api/refrigerator";
 import { defaultImage } from "@/constants/defaultImage";
 import { initAddFoodInfo } from "@/constants/initAddFoodInfo";
-
+import { useLoginUser } from "@/store";
 import type { FoodCartData } from "@/types/api.types";
 
 interface FoodInfoModalProps {
@@ -20,9 +20,13 @@ const AddFoodModal = ({ isOpen, closeModal }: FoodInfoModalProps) => {
 	const { change } = useChangeRefriStore();
 	const [newItem, setNewItem] = useState<FoodCartData>(initAddFoodInfo);
 	const [newImageFile, setNewImageFile] = useState<File>();
+	const { loginUser } = useLoginUser();
 
 	useEffect(() => {
-		setNewItem(initAddFoodInfo);
+		setNewItem({
+			...initAddFoodInfo,
+			user: loginUser!,
+		});
 	}, [isOpen]);
 
 	const getFood = (item: FoodCartData, file?: File) => {
