@@ -7,4 +7,5 @@ export const initAddFoodInfo = {
 	image: "",
 	id: "0",
 	place: "냉동",
+	user: "",
 } as const;

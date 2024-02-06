@@ -1,6 +1,16 @@
 import { create } from "zustand";
 import type { CategoryData, RecipeListData } from "@/types/api.types";
 
+interface UseLoginUserTyper {
+	loginUser: string | null;
+	setLoginUser: (user: string | null) => void;
+}
+
+export const useLoginUser = create<UseLoginUserTyper>((set) => ({
+	loginUser: "",
+	setLoginUser: (user) => set({ loginUser: user }),
+}));
+
 interface UseChangeRefriStoreTyper {
 	isChange: boolean;
 	change: () => void;
