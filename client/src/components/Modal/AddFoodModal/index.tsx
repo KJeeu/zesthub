@@ -1,37 +1,29 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 import Modal from "@/components/Modal";
 import { FONT_SIZE } from "@/styles/common";
 import FoodInfoForm from "@/components/FoodInfoForm";
 import TextButton from "@/components/TextButton";
 import { useChangeRefriStore } from "@/store";
-import {
-	deleteFood,
-	deleteFoodImage,
-	uploadImage,
-	updateFood,
-} from "@/api/refrigerator";
+import { uploadImage, createFoodCart } from "@/api/refrigerator";
+import { defaultImage } from "@/constants/defaultImage";
+import { initAddFoodInfo } from "@/constants/initAddFoodInfo";
 
 import type { FoodCartData } from "@/types/api.types";
 
 interface FoodInfoModalProps {
 	isOpen: boolean;
 	closeModal: () => void;
-	image: string;
-	item: FoodCartData;
 }
 
-const FoodInfoModal = ({
-	isOpen,
-	closeModal,
-	image,
-	item,
-}: FoodInfoModalProps) => {
+const AddFoodModal = ({ isOpen, closeModal }: FoodInfoModalProps) => {
 	const { change } = useChangeRefriStore();
-	const [newItem, setNewItem] = useState({
-		...item,
-	});
+	const [newItem, setNewItem] = useState<FoodCartData>(initAddFoodInfo);
 	const [newImageFile, setNewImageFile] = useState<File>();
+
+	useEffect(() => {
+		setNewItem(initAddFoodInfo);
+	}, [isOpen]);
 
 	const getFood = (item: FoodCartData, file?: File) => {
 		setNewItem(item);
@@ -40,53 +32,45 @@ const FoodInfoModal = ({
 		}
 	};
 
-	const handleDelete = async () => {
-		try {
-			await deleteFood(item.id);
-			deleteFoodImage(item.image);
-			closeModal();
-			change();
-		} catch (error) {
-			alert(`삭제 실패: ${error}`);
-		}
-	};
+	const handleCreate = async () => {
+		const isAnyEmpty = Object.values(newItem).some((item) => item === "");
 
-	const handleUpdate = async () => {
+		if (newItem.image === "") {
+			return alert("이미지를 추가해주세요");
+		}
+
+		if (isAnyEmpty) {
+			return alert("빈 칸을 채워주세요");
+		}
+
 		try {
-			if (item.image !== newItem.image) {
-				deleteFoodImage(item.image);
-				await uploadImage(newImageFile!);
-				await updateFood(newItem);
-			} else {
-				await updateFood(newItem);
-			}
+			await uploadImage(newImageFile!);
+			await createFoodCart(newItem);
 			change();
 			closeModal();
+			setNewItem(initAddFoodInfo);
 		} catch (error) {
-			alert(`수정 실패: ${error}`);
+			alert(`저장 실패: ${error}`);
 		}
 	};
 
 	return (
 		<Modal isOpen={isOpen} closeModal={closeModal}>
 			<Container>
-				<Title>상세보기</Title>
+				<Title>냉장고에 재료 추가하기</Title>
 				<Content>
-					<FoodInfoForm update={getFood} item={item} imageUrl={image} />
+					<FoodInfoForm
+						update={getFood}
+						item={newItem}
+						imageUrl={defaultImage}
+					/>
 					<ButtonBox>
 						<TextButton
-							text="삭제"
+							text="추가"
 							colorType="dark"
 							type="button"
-							width="100px"
-							onClick={handleDelete}
-						/>
-						<TextButton
-							text="저장"
-							colorType="dark"
-							type="button"
-							width="100px"
-							onClick={handleUpdate}
+							width="80px"
+							onClick={handleCreate}
 						/>
 					</ButtonBox>
 				</Content>
@@ -95,7 +79,7 @@ const FoodInfoModal = ({
 	);
 };
 
-export default FoodInfoModal;
+export default AddFoodModal;
 
 const Container = styled.div`
 	display: flex;

@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { FONT_SIZE, BORDER_RADIUS } from "@/styles/common";
 
 import google from "@/assets/icons/google.svg";
+import refrigerator from "@/assets/icons/refrigerator.svg";
 import cook from "@/assets/icons/cook.svg";
 import close from "@/assets/icons/close.svg";
 import search from "@/assets/icons/search.svg";
@@ -10,6 +11,7 @@ import InlineSVG from "react-inlinesvg";
 
 const Icon: Record<string, React.ReactNode> = {
 	login: <InlineSVG src={google} width={24} />,
+	addFood: <InlineSVG src={refrigerator} width={35} />,
 	recipeCreate: <InlineSVG src={cook} width={35} />,
 	close: <InlineSVG src={close} width={24} />,
 	search: <InlineSVG src={search} width={24} />,
@@ -17,6 +19,7 @@ const Icon: Record<string, React.ReactNode> = {
 
 const Message: Record<string, React.ReactNode> = {
 	login: "구글로 로그인하기",
+	addFood: "냉장고에 재료 추가하기",
 	recipeCreate: "레시피 만들기",
 	close: "닫기",
 	search: "검색",

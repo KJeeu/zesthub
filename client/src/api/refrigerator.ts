@@ -1,6 +1,7 @@
 import { db, app } from "@/firebase";
 import {
 	collection,
+	addDoc,
 	getDocs,
 	query,
 	where,
@@ -19,6 +20,18 @@ export const getCategory = async () => {
 		title: category.title,
 		storage: category.storage,
 	}));
+};
+
+export const createFoodCart = async (data: FoodCartData) => {
+	addDoc(collection(db, "cart"), {
+		buyDate: data.buyDate,
+		category: data.category,
+		count: data.count,
+		expiryDate: data.expiryDate,
+		image: data.image,
+		name: data.name,
+		place: data.place,
+	});
 };
 
 export const getFoodCart = async (
