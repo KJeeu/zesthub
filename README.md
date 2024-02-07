@@ -65,21 +65,6 @@
   </tr>
 </table>
 
-### 식품 삭제, 수정
-- 식품을 클릭시 모달창이 생성된다.
-- 이미지, 식품명, 카테고리, 구매일자, 소비기한, 개수, 보관위치 수정 가능하다.
-- 수정시 이미지 변경시 기존 저장된 이미지는 삭제되고 새로운 이미지가 Storage에 저장된다. 기존 Cloud FireStore에 데이터가 업데이트된다.
-<table>
-  <tr>
-    <td><img width="400" alt="식품추가" src="https://github.com/growth-ring/taskgrow/assets/116357790/6c4dbe85-587d-4c94-b6e6-27fc14f5d4ae"></td>
-    <td><img width="400" alt="식품 추가 후" src="https://github.com/growth-ring/taskgrow/assets/116357790/740fe012-57d0-490f-ad28-45d5eb54bb03"></td>
-  </tr>
-  <tr>
-    <td>식품 상세보기</td>
-    <td>식품 수정, 삭제 가능</td>
-  </tr>
-</table>
-
 ### 식품 필터
 - 기존 냉장고와 같이 냉동은 상단에, 냉장은 하단에 위치해있다.
 - 카테고리별로 필터 검색이 가능하다.
