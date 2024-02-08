@@ -1,6 +1,10 @@
 # Zesthub
 <img width="800" alt="메인페이지" src="https://github.com/growth-ring/taskgrow/assets/116357790/c03a14d3-1b3c-44e7-aa21-cfcf29f58a49">
 
+<img width="800" alt="작동화면1" src="https://github.com/growth-ring/taskgrow/assets/116357790/4433f421-30f1-4a22-b407-76a4f09258d9">
+
+<img width="800" alt="작동화면2" src="https://github.com/growth-ring/taskgrow/assets/116357790/6424bcfc-12e7-42d5-a96e-abbb827a6ae0">
+
 ### 프로젝트 소개
 ---
 냉장고를 열지 않고 냉장고 안의 식품을 관리하고 재료들을 조합해서 추천 레시피를 알려주는 웹 애플리케이션 서비스
