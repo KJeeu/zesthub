@@ -16,13 +16,11 @@ const BookmarkPage = () => {
 		},
 	});
 
-	const menus = BookmarkList?.map((x) => x.menu);
-
 	return (
 		<Container>
 			<Banner>
 				<StyledLink to="/main">
-					<Title>&lt; &nbsp; 찜한 목록</Title>
+					<Title>{"< "}찜한 목록</Title>
 				</StyledLink>
 			</Banner>
 			<ResultSection>
@@ -30,7 +28,9 @@ const BookmarkPage = () => {
 				{BookmarkList && (
 					<>
 						<ResultCount>{BookmarkList.length}개의 레시피</ResultCount>
-						{menus?.map((menu) => <BookmarkBox menu={menu} />)}
+						{BookmarkList?.map((bookmark, index) => (
+							<BookmarkBox key={index} recipe={bookmark} />
+						))}
 					</>
 				)}
 			</ResultSection>

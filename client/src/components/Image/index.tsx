@@ -4,8 +4,8 @@ import { BORDER_RADIUS } from "@/styles/common";
 interface ImageSectionProps {
 	width?: string;
 	height?: string;
-	minWidth?: string;
-	minHight?: string;
+	$minWidth?: string;
+	$minHeight?: string;
 }
 
 const ImageSection = styled.section<ImageSectionProps>`
@@ -13,10 +13,10 @@ const ImageSection = styled.section<ImageSectionProps>`
 	overflow: hidden;
 
 	width: ${({ width }) => width};
-	min-width: ${({ minWidth }) => minWidth};
+	min-width: ${({ $minWidth }) => $minWidth};
 
 	height: ${({ height }) => height};
-	min-height: ${({ minHight }) => minHight};
+	min-height: ${({ $minHeight }) => $minHeight};
 
 	border-radius: ${BORDER_RADIUS.md};
 `;
@@ -41,15 +41,15 @@ const Image = ({
 	menuImage,
 	width = "100%",
 	height = "100%",
-	minWidth = "150px",
-	minHight = "150px",
+	$minWidth = "150px",
+	$minHeight = "150px",
 }: ImageProps) => {
 	return (
 		<ImageSection
 			width={width}
 			height={height}
-			minWidth={minWidth}
-			minHight={minHight}
+			$minWidth={$minWidth}
+			$minHeight={$minHeight}
 		>
 			<ImageView src={menuImage} alt={menu} />
 		</ImageSection>

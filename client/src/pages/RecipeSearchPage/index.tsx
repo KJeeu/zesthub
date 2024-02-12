@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { useQuery } from "@tanstack/react-query";
 import { Link, useParams } from "react-router-dom";
 import { FONT_SIZE } from "@/styles/common";
-import { getRecipe } from "@/api/recipe";
+import { getRecipeList } from "@/api/recipe";
 import SearchResultBox from "@/components/SearchResultBox";
 
 const RecipeSearchPage = () => {
@@ -11,7 +11,7 @@ const RecipeSearchPage = () => {
 	const { data: RecipeList, isLoading } = useQuery({
 		queryKey: ["recipe", foodCart],
 		queryFn: () => {
-			return getRecipe(foodCart!); // Page parameter라서 없을 수가 없음
+			return getRecipeList(foodCart!); // Page parameter라서 없을 수가 없음
 		},
 		staleTime: Infinity,
 		gcTime: Infinity,

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 import Image from "../Image";
 import { useNavigate } from "react-router-dom";
-import { useUserSelectRecipeStore } from "@/store";
 import { FONT_SIZE } from "@/styles/common";
 import type { RecipeListData } from "@/types/api.types";
 
@@ -10,11 +9,9 @@ interface SearchResultBoxProps {
 }
 
 const SearchResultBox = ({ recipe }: SearchResultBoxProps) => {
-	const { userSelectRecipe } = useUserSelectRecipeStore();
 	const navigate = useNavigate();
 	const onClick = () => {
-		userSelectRecipe(recipe);
-		navigate(`/recipe/detail`);
+		navigate(`/recipe/detail/${recipe.menuName}`);
 	};
 
 	return (
