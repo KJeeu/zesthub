@@ -9,10 +9,15 @@ import {
 	deleteDoc,
 } from "firebase/firestore";
 
-export const createBookmark = async (user: string, menu: string) => {
+import type { RecipeListData, BookmarkBoxProps } from "@/types/api.types";
+
+export const createBookmark = async (user: string, recipe: RecipeListData) => {
 	addDoc(collection(db, "bookmark"), {
 		user: user,
-		menu: menu,
+		menu: recipe.menuName,
+		count: recipe.ingredients.name.length,
+		ingredients: recipe.ingredients.name.join(", "),
+		image: recipe.menuImage,
 	});
 };
 
@@ -21,11 +26,18 @@ export const getBookmark = async (user: string) => {
 		query(collection(db, "bookmark"), where("user", "==", user)),
 	);
 
-	const data = response.docs.map((bookmark) => {
-		return bookmark.data();
+	const bookmark: BookmarkBoxProps[] = response.docs.map((bookmark) => {
+		const data = bookmark.data();
+		return {
+			user: data.user,
+			menu: data.menu,
+			count: data.count,
+			ingredients: data.ingredients,
+			image: data.image,
+		};
 	});
 
-	return data;
+	return bookmark;
 };
 
 export const getBookmarkid = async (user: string, menu: string) => {
