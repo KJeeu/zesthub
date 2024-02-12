@@ -26,3 +26,11 @@ export interface RecipeListData {
 	recipeInfo: string[];
 	menuTip: string[];
 }
+
+export interface BookmarkBoxProps {
+	user: string;
+	menu: string;
+	count: number;
+	ingredients: string;
+	image: string;
+}
