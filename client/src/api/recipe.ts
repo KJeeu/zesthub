@@ -1,7 +1,7 @@
 import axios from "axios";
 import recipeFilter from "@/utils/recipeFilter";
 
-export const getRecipe = async (food: string) => {
+export const getRecipeList = async (food: string) => {
 	const KEY = import.meta.env.VITE_API_RECIPE_KEY;
 
 	try {
@@ -20,7 +20,7 @@ export const getRecipe = async (food: string) => {
 	}
 };
 
-export const getBookmarkRecipe = async (menu: string) => {
+export const getRecipe = async (menu: string) => {
 	const KEY = import.meta.env.VITE_API_RECIPE_KEY;
 
 	try {
