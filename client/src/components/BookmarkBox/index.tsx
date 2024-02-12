@@ -1,55 +1,37 @@
 import styled from "styled-components";
 import Image from "../Image";
-import { useQuery } from "@tanstack/react-query";
 import { useNavigate } from "react-router-dom";
-import { useUserSelectRecipeStore } from "@/store";
 import { FONT_SIZE } from "@/styles/common";
-import { getBookmarkRecipe } from "@/api/recipe";
 
-import type { RecipeListData } from "@/types/api.types";
+import type { BookmarkBoxProps } from "@/types/api.types";
 
-const BookmarkBox = ({ menu }: { menu: string }) => {
-	const { userSelectRecipe } = useUserSelectRecipeStore();
+const BookmarkBox = ({ recipe }: { recipe: BookmarkBoxProps }) => {
 	const navigate = useNavigate();
 
-	const { data: Recipe } = useQuery({
-		queryKey: ["bookmark", menu],
-		queryFn: async () => {
-			return await getBookmarkRecipe(menu);
-		},
-		staleTime: Infinity,
-		gcTime: Infinity,
-	});
-
-	const onClick = (recipe: RecipeListData) => {
-		userSelectRecipe(recipe);
-		navigate(`/recipe/detail`);
+	const onClick = () => {
+		navigate(`/recipe/detail/${recipe.menu}`);
 	};
 
 	return (
-		<>
-			{Recipe?.map((recipe) => (
-				<ResultBox onClick={() => onClick(recipe)}>
-					<SearchResultBoxInfoCard>
-						<Image
-							menu={recipe.menuName}
-							menuImage={recipe.menuImage}
-							width="198px"
-							height="150px"
-						/>
-						<InfoSection>
-							<InfoTopSection>
-								<Menu>{recipe.menuName}</Menu>
-							</InfoTopSection>
-							<IngredientsCount>
-								{recipe.ingredients.name.length}개 재료
-							</IngredientsCount>
-							<Ingredients>{recipe.ingredients.name.join(", ")}</Ingredients>
-						</InfoSection>
-					</SearchResultBoxInfoCard>
-				</ResultBox>
-			))}
-		</>
+		<ResultBox onClick={onClick}>
+			<SearchResultBoxInfoCard>
+				<Image
+					menu={recipe.menu}
+					menuImage={recipe.image}
+					width="198px"
+					height="150px"
+				/>
+				<InfoSection>
+					<InfoTopSection>
+						<Menu>{recipe.menu}</Menu>
+					</InfoTopSection>
+					<IngredientsCount>
+						{recipe.ingredients.length}개 재료
+					</IngredientsCount>
+					<Ingredients>{recipe.ingredients}</Ingredients>
+				</InfoSection>
+			</SearchResultBoxInfoCard>
+		</ResultBox>
 	);
 };
 
